@@ -1,27 +1,8 @@
-import { api } from "@/lib/api";
-
-import { AxiosError } from "axios";
+import { getPosts } from "@/lib/api";
 import CardsList from "../components/CardsList";
 
-async function getAllPosts() {
-  try {
-    const response = await api.post("/cards", {
-      category: [],
-      limit: 20,
-      order: "ASC",
-      order_by: "title",
-      post_type: ["customers"],
-    });
-    return response.data.data;
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      console.log(error.response.data);
-    }
-  }
-}
-
 export default async function Home() {
-  const posts = await getAllPosts();
+  const posts = await getPosts();
 
   return (
     <main>

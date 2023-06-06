@@ -1,9 +1,15 @@
 "use client";
 
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
-export default function Dropdown({ title, info, handleCategoryChange }) {
+export default function Dropdown({
+  title,
+  info,
+  handleCategoryChange,
+  handlePageChange,
+}) {
+  const dropdownRef = useRef(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
 
@@ -11,8 +17,23 @@ export default function Dropdown({ title, info, handleCategoryChange }) {
     setIsDropdownOpen(!isDropdownOpen);
   }
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div
+      ref={dropdownRef}
       onClick={toggleDropdown}
       className={`group relative w-full rounded-lg border-2 border-purple-600 bg-gray-50 px-4 py-2 hover:border-purple-500 hover:bg-purple-500 ${
         isDropdownOpen && "rounded-b-none bg-purple-500"
@@ -22,7 +43,7 @@ export default function Dropdown({ title, info, handleCategoryChange }) {
         className={`z-50 flex items-center justify-between text-sm uppercase`}
       >
         <span
-          className={`font-medium group-hover:text-gray-50 ${
+          className={`w-[200px] truncate font-medium group-hover:text-gray-50 ${
             isDropdownOpen ? "text-gray-50" : "text-purple-600"
           }`}
         >
@@ -48,6 +69,7 @@ export default function Dropdown({ title, info, handleCategoryChange }) {
             <li
               onClick={() => {
                 handleCategoryChange(category.alt);
+                handlePageChange(1);
                 setNewTitle(category.title);
               }}
               key={category.alt}

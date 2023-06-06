@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function PaginationTest(props) {
   const {
-    onPageChange,
+    handlePageChange,
     totalCount,
     siblingCount = 1,
     currentPage,
@@ -22,18 +22,20 @@ export default function PaginationTest(props) {
   }
 
   const onNext = () => {
-    onPageChange(currentPage + 1);
+    handlePageChange(currentPage + 1);
   };
 
   const onPrevious = () => {
-    onPageChange(currentPage - 1);
+    handlePageChange(currentPage - 1);
   };
 
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
     <ul className="flex items-center gap-2">
       <li
-        className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-500 hover:bg-purple-200"
+        className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-500 hover:bg-purple-200 ${
+          currentPage === 1 && "hidden"
+        }`}
         onClick={onPrevious}
       >
         <ChevronLeft width={18} />
@@ -54,7 +56,7 @@ export default function PaginationTest(props) {
                 ? "bg-purple-500 text-gray-50"
                 : "bg-transparent text-purple-500"
             }`}
-            onClick={() => onPageChange(pageNumber)}
+            onClick={() => handlePageChange(pageNumber)}
             key={index}
           >
             {pageNumber}
@@ -62,7 +64,9 @@ export default function PaginationTest(props) {
         );
       })}
       <li
-        className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-500 hover:bg-purple-200"
+        className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-500 hover:bg-purple-200 ${
+          currentPage === lastPage && "hidden"
+        }`}
         onClick={onNext}
       >
         <ChevronRight width={18} />
