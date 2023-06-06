@@ -11,11 +11,6 @@ export default function Dropdown({ title, info, handleCategoryChange }) {
     setIsDropdownOpen(!isDropdownOpen);
   }
 
-  function handleCategorySelection(category, title) {
-    setNewTitle(title);
-    handleCategoryChange(category);
-  }
-
   return (
     <div
       onClick={toggleDropdown}
@@ -51,9 +46,10 @@ export default function Dropdown({ title, info, handleCategoryChange }) {
         >
           {info.dropdown.map((category) => (
             <li
-              onClick={() =>
-                handleCategorySelection(category.alt, category.title)
-              }
+              onClick={() => {
+                handleCategoryChange(category.alt);
+                setNewTitle(category.title);
+              }}
               key={category.alt}
               className="cursor-pointer bg-gray-50 p-4 transition ease-in-out hover:bg-gray-200"
             >

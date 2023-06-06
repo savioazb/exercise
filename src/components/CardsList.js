@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
 import Card from "./Card";
 import Pagination from "./Pagination";
@@ -15,15 +15,13 @@ import EmptyState from "./EmptyState";
 
 export default function CardsList({ postsInfo }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [industry, setIndustry] = useState("");
-  const [integration, setIntegration] = useState("");
-  const [region, setRegion] = useState("");
+  const [industry, setIndustry] = useState("all-industry");
+  const [integration, setIntegration] = useState("all-integrations");
+  const [region, setRegion] = useState("all-regions");
   const postsPerPage = 20;
-  const [posts, setPosts] = useState([]);
-  const [totalPosts, setTotalPosts] = useState(0);
-  const [isLoading, setIsLoading] = useState();
-
-  ///_industry
+  const [posts, setPosts] = useState(postsInfo.list);
+  const [totalPosts, setTotalPosts] = useState(postsInfo.count_per.query);
+  const [isLoading, setIsLoading] = useState(postsInfo ? false : true);
 
   async function handleIndustryRequest(industry) {
     setIsLoading(true);
@@ -117,6 +115,7 @@ export default function CardsList({ postsInfo }) {
       });
       console.log(response.data.data.list);
       setPosts(response.data.data.list);
+      setTotalPosts(response.data.data.count_per.query);
       return response.data.data;
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -125,14 +124,16 @@ export default function CardsList({ postsInfo }) {
     }
   }
 
-  async function handleSearchRequests(param, title) {
-    if (title === "Industries") {
-      setIndustry(param);
-    }
+  async function handleSearchRequests() {
+    console.log(industry);
+    console.log(integration);
+    console.log(region);
     try {
       const response = await api.post("/cards", {
         category: [],
         industry: industry,
+        integration: integration,
+        region: region,
         limit: 20,
         order: "ASC",
         page: page,
@@ -150,11 +151,16 @@ export default function CardsList({ postsInfo }) {
   }
 
   useEffect(() => {
-    setIsLoading(true);
-    setPosts(postsInfo.list);
-    setTotalPosts(postsInfo.count_per.query);
-    setIsLoading(false);
-  }, [postsInfo]);
+    console.log("changed");
+    handleSearchRequests();
+  }, [industry, integration, region]);
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   setPosts(postsInfo.list);
+  //   setTotalPosts(postsInfo.count_per.query);
+  //   setIsLoading(false);
+  // }, [postsInfo]);
 
   return (
     <div>
@@ -162,17 +168,17 @@ export default function CardsList({ postsInfo }) {
         <Dropdown
           title={"Industries"}
           info={industries}
-          handleCategoryChange={handleIndustryRequest}
+          handleCategoryChange={(ind) => setIndustry(ind)}
         />
         <Dropdown
           title={"Regions"}
           info={regions}
-          handleCategoryChange={handleRegionRequest}
+          handleCategoryChange={(reg) => setRegion(reg)}
         />
         <Dropdown
           title={"Integrations"}
           info={integrations}
-          handleCategoryChange={handleIntegrationRequest}
+          handleCategoryChange={(int) => setIntegration(int)}
         />
       </div>
       <div className="relative z-10 flex flex-col items-center gap-8">
