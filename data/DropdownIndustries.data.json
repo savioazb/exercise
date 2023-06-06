@@ -1,0 +1,52 @@
+{
+  "dropdown": [
+    {
+      "title": "All Industries",
+      "alt": "all-industries"
+    },
+    {
+      "title": "Business Services",
+      "alt": "business-services"
+    },
+    {
+      "title": "Communications, Media & Internet",
+      "alt": "communications-media-internet"
+    },
+    {
+      "title": "Financial Services & Insurance",
+      "alt": "financial-services-insurance"
+    },
+    {
+      "title": "Government & Education",
+      "alt": "government-education"
+    },
+    {
+      "title": "Healthcare & Life Sciences",
+      "alt": "healthcare-life-sciences"
+    },
+    {
+      "title": "Information Technology & Services",
+      "alt": "information-technology-services"
+    },
+    {
+      "title": "Manufacturing",
+      "alt": "manufacturing"
+    },
+    {
+      "title": "Retail & Consumer Goods",
+      "alt": "retail-consumer-goods"
+    },
+    {
+      "title": "Staffing & Employment Services",
+      "alt": "staffing-employment-services"
+    },
+    {
+      "title": "Transportation & Hospitality",
+      "alt": "transportation-hospitality"
+    },
+    {
+      "title": "Transportation & Logistics",
+      "alt": "transportation-logistics"
+    }
+  ]
+}

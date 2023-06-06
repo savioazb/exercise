@@ -1,0 +1,16 @@
+{
+  "dropdown": [
+    {
+      "title": "All Regions",
+      "alt": "all-regions"
+    },
+    {
+      "title": "Americas",
+      "alt": "americas"
+    },
+    {
+      "title": "EMEA",
+      "alt": "emea"
+    }
+  ]
+}

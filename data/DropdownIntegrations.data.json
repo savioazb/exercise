@@ -1,0 +1,52 @@
+{
+  "dropdown": [
+    {
+      "title": "All Integrations",
+      "alt": "all-integrations"
+    },
+    {
+      "title": "API",
+      "alt": "api"
+    },
+    {
+      "title": "Custom CRM",
+      "alt": "custom-crm"
+    },
+    {
+      "title": "Freshdesk",
+      "alt": "freshdesk"
+    },
+    {
+      "title": "Help Scout",
+      "alt": "help-scout"
+    },
+    {
+      "title": "Intercom",
+      "alt": "intercom"
+    },
+    {
+      "title": "Kustomer CRM",
+      "alt": "kustomer-crm"
+    },
+    {
+      "title": "Microsoft Dynamics",
+      "alt": "microsoft-dynamics"
+    },
+    {
+      "title": "Salesforce",
+      "alt": "salesforce"
+    },
+    {
+      "title": "ServiceNow",
+      "alt": "servicenow"
+    },
+    {
+      "title": "Slack",
+      "alt": "slack"
+    },
+    {
+      "title": "Zendesk",
+      "alt": "zendesk"
+    }
+  ]
+}

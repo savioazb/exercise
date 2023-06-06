@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    domains: ["infra-cloudfront-talkdeskcom.svc.talkdeskapp.com"],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
