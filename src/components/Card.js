@@ -1,16 +1,22 @@
 import Image from "next/image";
 
-export default function Card({ imgUrl, title, label }) {
+export default function Card({
+  imgUrl,
+  brokenImageUrl,
+  brokenImageAlt,
+  title,
+  label,
+}) {
   return (
     <div className="group cursor-pointer">
       <div className="mb-2 overflow-hidden rounded-xl">
         <Image
-          src={imgUrl}
+          src={imgUrl ? imgUrl : brokenImageUrl}
           className="inline-block h-auto w-full max-w-lg rounded-xl transition duration-500 ease-in-out hover:scale-110"
           width="0"
           height="0"
           sizes="100%"
-          alt=""
+          alt={imgUrl ? "" : brokenImageAlt}
         />
       </div>
 

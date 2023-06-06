@@ -22,6 +22,8 @@ export default function CardsList({ postsInfo }) {
   const [totalPosts, setTotalPosts] = useState(postsInfo.count_per.query);
   const [isLoading, setIsLoading] = useState(postsInfo ? false : true);
 
+  console.log(posts);
+
   const handleSearchRequests = useCallback(async () => {
     setIsLoading(true);
     const posts = await getPosts(currentPage, industry, integration, region);
@@ -70,10 +72,12 @@ export default function CardsList({ postsInfo }) {
           <EmptyState />
         ) : (
           <Grid>
-            {posts.map((post) => (
+            {posts.map((post, i) => (
               <Card
-                key={post.title}
+                key={i}
                 imgUrl={post.image.src}
+                brokenImageUrl={post.image.broken_image.src}
+                brokenImageAlt={post.image.broken_image.alt}
                 title={post.title}
                 label={post.label.text}
               />
