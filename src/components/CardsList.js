@@ -22,8 +22,6 @@ export default function CardsList({ postsInfo }) {
   const [totalPosts, setTotalPosts] = useState(postsInfo.count_per.query);
   const [isLoading, setIsLoading] = useState(postsInfo ? false : true);
 
-  console.log(posts);
-
   const handleSearchRequests = useCallback(async () => {
     setIsLoading(true);
     const posts = await getPosts(currentPage, industry, integration, region);
