@@ -3,12 +3,7 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
-export default function Dropdown({
-  title,
-  info,
-  handleCategoryChange,
-  handlePageChange,
-}) {
+export default function Dropdown({ title, info, handleCategoryChange }) {
   const dropdownRef = useRef(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
@@ -69,7 +64,6 @@ export default function Dropdown({
             <li
               onClick={() => {
                 handleCategoryChange(category.alt);
-                handlePageChange(1);
                 setNewTitle(category.title);
               }}
               key={category.alt}

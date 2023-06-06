@@ -33,7 +33,7 @@ export default function PaginationTest(props) {
   return (
     <ul className="flex items-center gap-2">
       <li
-        className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-500 hover:bg-purple-200 ${
+        className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-600 hover:bg-purple-200 ${
           currentPage === 1 && "hidden"
         }`}
         onClick={onPrevious}
@@ -43,7 +43,7 @@ export default function PaginationTest(props) {
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === DOTS) {
           return (
-            <li className="text-purple-500" key={index}>
+            <li className="text-purple-600" key={index}>
               &#8230;
             </li>
           );
@@ -51,10 +51,10 @@ export default function PaginationTest(props) {
 
         return (
           <li
-            className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full  p-4 hover:bg-purple-200 hover:text-purple-500 ${
+            className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full  p-4 hover:bg-purple-200 hover:text-purple-600 ${
               pageNumber === currentPage
-                ? "bg-purple-500 text-gray-50"
-                : "bg-transparent text-purple-500"
+                ? "bg-purple-600 text-gray-50"
+                : "bg-transparent text-purple-600"
             }`}
             onClick={() => handlePageChange(pageNumber)}
             key={index}
@@ -64,7 +64,7 @@ export default function PaginationTest(props) {
         );
       })}
       <li
-        className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-500 hover:bg-purple-200 ${
+        className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-600 hover:bg-purple-200 ${
           currentPage === lastPage && "hidden"
         }`}
         onClick={onNext}

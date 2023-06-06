@@ -1,9 +1,10 @@
+import Banner from "@/components/Banner";
 import "./globals.css";
 import { Inter, Roboto_Flex as Roboto } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
   display: "swap",
 });
@@ -24,9 +25,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${roboto.variable} mx-auto max-w-[1360px] bg-gray-50 px-8 py-10 font-sans text-gray-900`}
+        className={`${inter.variable} ${roboto.variable} bg-gray-50 pb-10 font-sans text-gray-900`}
       >
-        {children}
+        <Banner />
+        <div className="mx-auto max-w-[1360px] px-8">{children}</div>
       </body>
     </html>
   );

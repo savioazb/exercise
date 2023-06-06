@@ -36,24 +36,30 @@ export default function CardsList({ postsInfo }) {
 
   return (
     <div>
-      <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row">
+      <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row">
         <Dropdown
           title={"Industries"}
           info={industries}
-          handleCategoryChange={(ind) => setIndustry(ind)}
-          handlePageChange={(page) => setCurrentPage(page)}
+          handleCategoryChange={(ind) => {
+            setIndustry(ind);
+            setCurrentPage(1);
+          }}
         />
         <Dropdown
           title={"Regions"}
           info={regions}
-          handleCategoryChange={(reg) => setRegion(reg)}
-          handlePageChange={(page) => setCurrentPage(page)}
+          handleCategoryChange={(reg) => {
+            setRegion(reg);
+            setCurrentPage(1);
+          }}
         />
         <Dropdown
           title={"Integrations"}
           info={integrations}
-          handleCategoryChange={(int) => setIntegration(int)}
-          handlePageChange={(page) => setCurrentPage(page)}
+          handleCategoryChange={(int) => {
+            setIntegration(int);
+            setCurrentPage(1);
+          }}
         />
       </div>
       <div className="relative z-10 flex flex-col items-center gap-8">
