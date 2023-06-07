@@ -33,12 +33,13 @@ export default function PaginationTest(props) {
   return (
     <ul className="flex items-center gap-2">
       <li
-        className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-600 hover:bg-purple-200 ${
-          currentPage === 1 && "hidden"
-        }`}
+        className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-600 hover:bg-purple-200"
         onClick={onPrevious}
       >
-        <ChevronLeft width={18} />
+        <ChevronLeft
+          className={`${currentPage === 1 && "hidden"}`}
+          width={12}
+        />
       </li>
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === DOTS) {
@@ -51,7 +52,7 @@ export default function PaginationTest(props) {
 
         return (
           <li
-            className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full  p-4 hover:bg-purple-200 hover:text-purple-600 ${
+            className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full p-4 text-sm  font-semibold hover:bg-purple-200 hover:text-purple-600 ${
               pageNumber === currentPage
                 ? "bg-purple-600 text-gray-50"
                 : "bg-transparent text-purple-600"
@@ -64,12 +65,13 @@ export default function PaginationTest(props) {
         );
       })}
       <li
-        className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-600 hover:bg-purple-200 ${
-          currentPage === lastPage && "hidden"
-        }`}
+        className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-purple-600 hover:bg-purple-200"
         onClick={onNext}
       >
-        <ChevronRight width={18} />
+        <ChevronRight
+          width={12}
+          className={`${currentPage === lastPage && "hidden"}`}
+        />
       </li>
     </ul>
   );

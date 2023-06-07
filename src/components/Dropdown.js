@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 export default function Dropdown({ title, info, handleCategoryChange }) {

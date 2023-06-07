@@ -28,7 +28,7 @@ export async function getPosts(
     return response.data.data;
   } catch (error) {
     if (error instanceof AxiosError) {
-      console.log(error.response.data);
+      console.error(error.response.data);
     }
   }
 }

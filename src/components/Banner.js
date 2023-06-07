@@ -1,6 +1,6 @@
 import Image from "next/image";
 import customers from "../assets/customers.png";
-import Button from "./Button";
+import WatchNowButton from "./WatchNowButton";
 
 export default function Banner() {
   return (
@@ -13,7 +13,7 @@ export default function Banner() {
           <h1 className="mb-16 max-w-full font-alt text-2xl font-bold leading-tight md:text-4xl lg:max-w-[480px] lg:text-[3rem]">
             Talkdesk customers&apos; success stories.
           </h1>
-          <Button />
+          <WatchNowButton />
         </div>
 
         <Image

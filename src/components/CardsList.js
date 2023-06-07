@@ -12,6 +12,8 @@ import regions from "../../data/DropdownRegions.data.json";
 import Grid from "./Grid";
 import EmptyState from "./EmptyState";
 
+let isFirstRender = true;
+
 export default function CardsList({ postsInfo }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [industry, setIndustry] = useState("");
@@ -31,11 +33,15 @@ export default function CardsList({ postsInfo }) {
   }, [currentPage, industry, integration, region]);
 
   useEffect(() => {
+    if (isFirstRender) {
+      isFirstRender = false;
+      return;
+    }
     handleSearchRequests();
   }, [currentPage, industry, integration, region, handleSearchRequests]);
 
   return (
-    <div>
+    <section>
       <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row">
         <Dropdown
           title={"Industries"}
@@ -66,7 +72,7 @@ export default function CardsList({ postsInfo }) {
         {isLoading && (
           <div className="absolute left-0 top-0 h-full w-full bg-gray-50 opacity-50"></div>
         )}
-        {totalPosts === 0 && isLoading === false ? (
+        {totalPosts === 0 && !isLoading ? (
           <EmptyState />
         ) : (
           <Grid>
@@ -76,6 +82,7 @@ export default function CardsList({ postsInfo }) {
                 imgUrl={post.image.src}
                 brokenImageUrl={post.image.broken_image.src}
                 brokenImageAlt={post.image.broken_image.alt}
+                linkUrl={post.link.url}
                 title={post.title}
                 label={post.label.text}
               />
@@ -90,6 +97,6 @@ export default function CardsList({ postsInfo }) {
           handlePageChange={(page) => setCurrentPage(page)}
         />
       </div>
-    </div>
+    </section>
   );
 }

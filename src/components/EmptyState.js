@@ -13,7 +13,6 @@ export default function EmptyState() {
         </p>
       </div>
       <Image
-        className=""
         src={emptyState}
         alt="Image illustrating no results from the search"
       />

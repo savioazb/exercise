@@ -1,4 +1,4 @@
-import { getPosts } from "@/lib/api";
+import { getPosts } from "../lib/api";
 import CardsList from "../components/CardsList";
 
 export default async function Home() {
