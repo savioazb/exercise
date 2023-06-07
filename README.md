@@ -6,7 +6,7 @@
 
 ## General info
 
-This project is an exercise for the Talkdesk recruitment process. It should simulate the [customers page](https://www.talkdesk.com/customers/).
+This project is an exercise for the Talkdesk recruitment process. It should simulate the [customers page](https://www.talkdesk.com/customers/). This project was also deployed via Vercel. Access it [here](https://www.talkdesk.com/customers/).
 
 ## Technologies
 

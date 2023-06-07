@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import Dropdown from "./Dropdown";
 import Card from "./Card";
 import Pagination from "./Pagination";
@@ -12,8 +12,6 @@ import regions from "../../data/DropdownRegions.data.json";
 import Grid from "./Grid";
 import EmptyState from "./EmptyState";
 
-let isFirstRender = true;
-
 export default function CardsList({ postsInfo }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [industry, setIndustry] = useState("");
@@ -24,6 +22,8 @@ export default function CardsList({ postsInfo }) {
   const [totalPosts, setTotalPosts] = useState(postsInfo.count_per.query);
   const [isLoading, setIsLoading] = useState(postsInfo ? false : true);
 
+  const isFirstRender = useRef(true);
+
   const handleSearchRequests = useCallback(async () => {
     setIsLoading(true);
     const posts = await getPosts(currentPage, industry, integration, region);
@@ -33,8 +33,8 @@ export default function CardsList({ postsInfo }) {
   }, [currentPage, industry, integration, region]);
 
   useEffect(() => {
-    if (isFirstRender) {
-      isFirstRender = false;
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
       return;
     }
     handleSearchRequests();
